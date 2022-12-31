@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { async } from "@firebase/util";
 import Footers from "../components/home/Footers";
 
-import { database } from "faker";
+
 import {axiosInstance} from "../config"
 const Home = () => {
   const [sponsorredVideos, setSponsorredVideos] = useState([]);
