@@ -20,7 +20,9 @@ const Home = () => {
   const [featureds, setFeatureds] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axiosInstance.get("/videos");
+      const res = await axiosInstance.get("/videos",{
+        withCredentials: true,
+      });
       const data = await res.data;
       let filtred = [];
 
@@ -41,7 +43,9 @@ const Home = () => {
   ///
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axiosInstance.get("/videos");
+      const res = await axiosInstance.get("/videos",{
+        withCredentials: true,
+      });
       const data = await res.data;
       let filtreds = [];
       setSponsorredVideo(filtreds);
