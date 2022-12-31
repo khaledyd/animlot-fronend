@@ -16,6 +16,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
+    "faker": "^6.6.6",
     "firebase": "^9.14.0",
     "get-video-duration": "^4.1.0",
     "moment": "^2.29.4",

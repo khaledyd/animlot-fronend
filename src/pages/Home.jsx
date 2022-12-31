@@ -10,8 +10,9 @@ import { Box } from "@mui/system";
 import { useEffect, useState } from "react";
 import { async } from "@firebase/util";
 import Footers from "../components/home/Footers";
-import axios from "axios";
+
 import { database } from "faker";
+import {axiosInstance} from "../config"
 const Home = () => {
   const [sponsorredVideos, setSponsorredVideos] = useState([]);
   const [sponsorredVideo, setSponsorredVideo] = useState([]);
@@ -19,7 +20,7 @@ const Home = () => {
   const [featureds, setFeatureds] = useState([]);
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axios.get("/videos");
+      const res = await axiosInstance.get("/videos");
       const data = await res.data;
       let filtred = [];
 
@@ -40,7 +41,7 @@ const Home = () => {
   ///
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axios.get("/videos");
+      const res = await axiosInstance.get("/videos");
       const data = await res.data;
       let filtreds = [];
       setSponsorredVideo(filtreds);
@@ -58,7 +59,7 @@ const Home = () => {
   //
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axios.get("/videos");
+      const res = await axiosInstance.get("/videos");
       const data = await res.data;
       let filtredfs = [];
 
@@ -78,7 +79,7 @@ const Home = () => {
   //
   useEffect(() => {
     const fetchdata = async () => {
-      const res = await axios.get("/videos");
+      const res = await axiosInstance.get("/videos");
       const data = await res.data;
       let filtredf = [];
       setFeatureds(filtredf);
