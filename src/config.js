@@ -3,5 +3,5 @@ import axios from "axios";
 
 
 export const axiosInstance = axios.create({
-  baseURL:" https://saanyo-api.cyclic.app/api"
+  baseURL:" https://animlot-api.onrender.com/api/"
 }); 
