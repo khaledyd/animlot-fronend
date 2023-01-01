@@ -97,7 +97,7 @@ console.log(inputs)
     e.preventDefault();
     try{
 
-      const res = await axiosInstance.post("/videos", {
+      const res = await axiosInstance.post("/videos/", {
         inputs,
         isSponsorred,
         fullname,
