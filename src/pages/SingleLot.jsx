@@ -9,12 +9,12 @@ import Commentcard from "./../components/singlelot/Commentcard";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
 import { subscription } from ".././Redux/userSlice";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import {axiosInstance} from "../config"
 
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
@@ -43,13 +43,13 @@ const SingleLot = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const videoRes = await axios.get(`/videos/${path}`);
-        const addview = await axios.put(`/videos/view/${path}`);
+        const videoRes = await axiosInstance.get(`/videos/${path}`);
+        const addview = await axiosInstance.put(`/videos/view/${path}`);
         setViews(addview.data.views);
         setVideo(videoRes.data);
         setcommentlists(videoRes.data.comments);
         setLikes(videoRes.data.likes);
-        const channelRes = await axios.get(
+        const channelRes = await axiosInstance.get(
           `/users/find/${videoRes.data.userId}`
         );
         console.log(channelRes);
@@ -65,13 +65,13 @@ const SingleLot = () => {
 
   const handleLike = async () => {
     if (currentUser) {
-      await axios.put(`/users/like/${currentVideo._id}`);
+      await axiosInstance.put(`/users/like/${currentVideo._id}`);
       dispatch(like(currentUser._id));
     }
   };
   const handleDislike = async () => {
     if (currentUser) {
-      await axios.put(`/users/dislike/${currentVideo._id}`);
+      await axiosInstance.put(`/users/dislike/${currentVideo._id}`);
       dispatch(dislike(currentUser._id));
     }
   };
@@ -79,8 +79,8 @@ const SingleLot = () => {
   const handleSub = async () => {
     if (currentUser) {
       currentUser.subscribedUsers.includes(subs._id)
-        ? await axios.put(`/users/unsub/${subs._id}`)
-        : await axios.put(`/users/sub/${subs._id}`);
+        ? await axiosInstance.put(`/users/unsub/${subs._id}`)
+        : await axiosInstance.put(`/users/sub/${subs._id}`);
       dispatch(subscription(subs._id));
     }
   };
@@ -89,7 +89,7 @@ const SingleLot = () => {
     e.preventDefault();
     if (currentUser) {
       let data = currentUser.fullname;
-      const res = await axios.put("/videos/comments/" + path, {
+      const res = await axiosInstance.put("/videos/comments/" + path, {
         comments,
         username: data,
       });
