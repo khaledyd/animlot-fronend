@@ -24,7 +24,7 @@ import {
 import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useSelector } from "react-redux";
-import { axiosInstance } from "../config";
+import {axiosInstance} from "../config"
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -48,16 +48,16 @@ const Upload = () => {
   const handleCheck = (event) => {
     setisSponsorred(event.target.checked);
   };
-  const uploadFile = (file, urlType) => {
-    const storage = getStorage(app);
+  const uploadFile =  (file, urlType) => {
+    const storage =  getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+    const uploadTask =  uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress =
+        const progress = 
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         urlType === "imgUrl"
           ? setImgPerc(Math.round(progress))
@@ -93,16 +93,15 @@ const Upload = () => {
   }, [img]);
 
   const handleUpload = async (e) => {
+    
     e.preventDefault();
-    if (uploadFile()) {
-      const res = await axiosInstance.post("/videos", {
-        ...inputs,
-        isSponsorred,
-        fullname,
-      });
+    const res = await axiosInstance.post("/videos", {
+      ...inputs,
+      isSponsorred,
+      fullname,
+    });
 
-      console.log(res.data);
-    }
+    console.log(res.data);
   };
   return (
     <Box
@@ -110,90 +109,89 @@ const Upload = () => {
         width: "100%",
         display: "flex",
         flexDirection: "column",
+            
       }}
     >
-      <Box
+    <Box sx={{
+      display: {
+        xs:"block",
+        md:"none",
+        lg:"none",
+        xl:"none",
+        sm:"block"
+      }
+    }}>
+    <Box
         sx={{
-          display: {
-            xs: "block",
-            md: "none",
-            lg: "none",
-            xl: "none",
-            sm: "block",
+          width: {
+            width: {
+              xs: "100%",
+              sm: "100%",
+              md: "100%",
+              lg: "100%",
+              xl: "100%",
+            },
+            display: "flex",
+            alignItems: "center",
+            justifyContent: {
+              xs: "space-between",
+              sm: "space-between",
+              md: "space-between",
+              lg: "space-between",
+              xl: "space-between",
+            },
           },
         }}
       >
         <Box
           sx={{
             width: {
-              width: {
-                xs: "100%",
-                sm: "100%",
-                md: "100%",
-                lg: "100%",
-                xl: "100%",
-              },
-              display: "flex",
-              alignItems: "center",
-              justifyContent: {
-                xs: "space-between",
-                sm: "space-between",
-                md: "space-between",
-                lg: "space-between",
-                xl: "space-between",
-              },
+              xs: "50%",
+              sm: "50%",
+              md: "50%",
+              lg: "50%",
+              xl: "50%",
             },
+            display: "flex",
+            justifyContent: "flex-start",
           }}
         >
-          <Box
-            sx={{
-              width: {
-                xs: "50%",
-                sm: "50%",
-                md: "50%",
-                lg: "50%",
-                xl: "50%",
-              },
-              display: "flex",
-              justifyContent: "flex-start",
+          <img
+            src="./images/animlot-logo.png"
+            style={{
+              marginLeft: "20px",
+              width: "120px",
+              height: "50px",
             }}
-          >
-            <img
-              src="./images/animlot-logo.png"
-              style={{
-                marginLeft: "20px",
-                width: "120px",
-                height: "50px",
-              }}
-              onClick={() => navigate("/")}
-            />
-          </Box>
-          <Box
-            sx={{
-              width: {
-                xs: "50%",
-                sm: "50%",
-                md: "50%",
-                lg: "50%",
-                xl: "50%",
-              },
-              display: "flex",
+            onClick={() => navigate("/")}
+          />
+        </Box>
+        <Box
+          sx={{
+            width: {
+              xs: "50%",
+              sm: "50%",
+              md: "50%",
+              lg: "50%",
+              xl: "50%",
+            },
+            display: "flex",
+            justifyContent: "flex-end",
+            marginRight: "0px",
+          }}
+        >
+          <PersonIcon
+            style={{
+              fontSize: "50px",
               justifyContent: "flex-end",
-              marginRight: "0px",
+              color: "#F35588",
             }}
-          >
-            <PersonIcon
-              style={{
-                fontSize: "50px",
-                justifyContent: "flex-end",
-                color: "#F35588",
-              }}
-              onClick={() => navigate("/dashboard")}
-            />
-          </Box>
+            onClick={() => navigate("/dashboard")}
+          />
         </Box>
       </Box>
-
+    </Box>
+     
       <Box display={"flex"}>
         <Box
           sx={{
