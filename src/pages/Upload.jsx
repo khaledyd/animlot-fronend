@@ -25,20 +25,6 @@ import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useSelector } from "react-redux";
 import { axiosInstance } from "../config";
-const handleUpload = async (e) => {
-  e.preventDefault();
-  try {
-    const res = await axiosInstance.post("/videos/", {
-      inputs,
-      isSponsorred,
-      fullname,
-    });
-
-    console.log(res.data);
-  } catch (err) {
-    console.log(err);
-  }
-};
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -53,6 +39,20 @@ const Upload = () => {
   const [tags, setTags] = useState([]);
   const [isSponsorred, setisSponsorred] = useState(false);
   const [fullname, setFullname] = useState(currentUser.fullname);
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axiosInstance.post("/videos/", {
+        inputs,
+        isSponsorred,
+        fullname,
+      });
+
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleChange = (e) => {
     setInputs((prev) => {
