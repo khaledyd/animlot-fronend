@@ -98,8 +98,7 @@ console.log(inputs)
     try{
 
       const res = await axiosInstance.post("/videos", {
-        withCredentials: true,
-        ...inputs,
+        inputs,
         isSponsorred,
         fullname,
       },);
