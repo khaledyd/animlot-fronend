@@ -106,22 +106,7 @@ const Upload = () => {
     img && uploadFile(img, "imgUrl");
   }, [img]);
 
-  const {Storage} = require('@google-cloud/storage');
-const storage = new Storage();
-const bucket = storage.bucket('your-bucket-name');
-
-async function deleteAllFiles() {
-  try {
-    // Delete all files in the bucket that have the prefix 'path/to/files/'
-    await bucket.deleteFiles({prefix: 'path/to/files/'});
-    console.log('Files deleted');
-  } catch (err) {
-    console.error('ERROR:', err);
-  }
-}
-
-deleteAllFiles();
-
+  
 
   return (
     <Box
