@@ -57,7 +57,7 @@ const Upload = () => {
     uploadTask.on(
       "state_changed",
       (snapshot) => {
-        const progress = await
+        const progress = 
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
         urlType === "imgUrl"
           ? setImgPerc(Math.round(progress))
