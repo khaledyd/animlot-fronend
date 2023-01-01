@@ -42,7 +42,7 @@ const Upload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
-      const res = await axiosInstance.post("/videos/uploaded", {
+      const res = await axiosInstance.post("/videos", {
 
         isSponsorred,
         fullname,
