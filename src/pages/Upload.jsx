@@ -83,7 +83,7 @@ const Upload = () => {
       }
     );
   };
-console.loh(inputs)
+console.log(inputs)
   useEffect(() => {
     video && uploadFile(video, "videoUrl");
   }, [video]);
