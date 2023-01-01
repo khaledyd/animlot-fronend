@@ -48,11 +48,11 @@ const Upload = () => {
   const handleCheck = (event) => {
     setisSponsorred(event.target.checked);
   };
-  const uploadFile = async (file, urlType) => {
+  const uploadFile =  (file, urlType) => {
     const storage =  getStorage(app);
     const fileName = new Date().getTime() + file.name;
     const storageRef = ref(storage, fileName);
-    const uploadTask = await uploadBytesResumable(storageRef, file);
+    const uploadTask =  uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
       "state_changed",
