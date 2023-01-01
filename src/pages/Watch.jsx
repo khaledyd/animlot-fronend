@@ -41,7 +41,7 @@ const Watch = () => {
           gap: "30px",
         }}
       >
-        {videos.map((video) => {
+        {videos && videos.map((video) => {
           return <Card key={video._id} videos={video} />;
         })}
       </Box>
