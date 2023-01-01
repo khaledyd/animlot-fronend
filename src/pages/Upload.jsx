@@ -95,14 +95,20 @@ const Upload = () => {
   const handleUpload = async (e) => {
     
     e.preventDefault();
-    const res = await axiosInstance.post("/videos", {
-      withCredentials: true,
-      ...inputs,
-      isSponsorred,
-      fullname,
-    },);
+    try{
 
-    console.log(res.data);
+      const res = await axiosInstance.post("/videos", {
+        withCredentials: true,
+        ...inputs,
+        isSponsorred,
+        fullname,
+      },);
+  
+      console.log(res.data);
+    }catch(err){
+      console.log(err);
+    }
+
   };
   return (
     <Box
