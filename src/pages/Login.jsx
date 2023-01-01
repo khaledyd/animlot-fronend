@@ -3,7 +3,7 @@ import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../config"
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { async } from "@firebase/util";
@@ -22,7 +22,7 @@ const Login = () => {
     dispatch(loginStart());
     signInWithPopup(auth, provider)
       .then((result) => {
-        axios
+        axiosInstance
           .post("/auth/google", {
             fullname: result.user.displayName,
             email: result.user.email,
@@ -45,7 +45,7 @@ const Login = () => {
       password,
     };
     try {
-      const res = await axios.post("/auth/signin/", data);
+      const res = await axiosInstance.post("/auth/signin/", data);
       dispatch(loginSuccess(res.data));
       navigate("/")
 

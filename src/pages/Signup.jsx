@@ -3,7 +3,7 @@ import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../config"
 
 const Signup = () => {
   const [fullname, setfullname] = useState("");
@@ -20,7 +20,7 @@ const Signup = () => {
       fullname,
     };
     try {
-      const res = await axios.post("/auth/signup", data);
+      const res = await axiosInstance.post("/auth/signup", data);
       console.log(res.data);
     } catch (err) {
       console.log(err);

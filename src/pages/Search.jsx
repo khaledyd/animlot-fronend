@@ -4,7 +4,7 @@ import Mininav from ".././components/Mininav";
 import Card from "../components/search/Card";
 import  { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import axios from "axios";
+import {axiosInstance} from "../config"
 
 const Search = () => {
   const [videos, setVideos] = useState([]);
@@ -13,7 +13,7 @@ const Search = () => {
 
   useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`/videos/search${query}`);
+      const res = await axiosInstance.get(`/videos/search${query}`);
       setVideos(res.data);
 
     };

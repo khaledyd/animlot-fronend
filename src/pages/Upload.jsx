@@ -12,7 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import app from "../firebase";
-import axios from "axios";
+import axiosInstance from "axiosInstance";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
@@ -24,6 +24,7 @@ import {
 import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useSelector } from "react-redux";
+import {axiosInstance} from "../config"
 
 const Upload = () => {
   const navigate = useNavigate();
@@ -93,7 +94,7 @@ const Upload = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const res = await axios.post("/videos", {
+    const res = await axiosInstance.post("/videos", {
       ...inputs,
       isSponsorred,
       fullname,
