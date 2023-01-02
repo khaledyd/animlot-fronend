@@ -42,10 +42,11 @@ const Upload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     try {
-      const res = await axiosInstance.post("/videos", {
-
+      const res = await axiosInstance.post(`/videos/${currentUser}`, {
+        userId: currentUser._id,
         isSponsorred,
         fullname,
+        ...inputs
       });
 
       console.log(res.data);
@@ -105,8 +106,6 @@ const Upload = () => {
   useEffect(() => {
     img && uploadFile(img, "imgUrl");
   }, [img]);
-
-  
 
   return (
     <Box
