@@ -3,7 +3,7 @@ import { borderColor, Box } from "@mui/system";
 import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
-import {axiosInstance} from "../config"
+import { axiosInstance } from "../config";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
 import { async } from "@firebase/util";
@@ -16,7 +16,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   const signInWithGoogle = async () => {
     dispatch(loginStart());
@@ -45,10 +44,11 @@ const Login = () => {
       password,
     };
     try {
-      const res = await axiosInstance.post("/auth/signin/", data);
+      const res = await axiosInstance.post("/auth/signin/", data, {
+        withCredentials: true,
+      });
       dispatch(loginSuccess(res.data));
-      navigate("/")
-
+      navigate("/");
 
       console.log(res.data);
     } catch (err) {
