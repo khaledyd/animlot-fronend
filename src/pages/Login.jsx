@@ -52,7 +52,7 @@ const Login = () => {
 
         { withCredentials: true }
       );
-      const cookie = res.headers['set-cookie'][0];
+      Cookies.set('access_token',token);
       console.log(cookie);
       dispatch(loginSuccess(res.data));
       navigate("/");
