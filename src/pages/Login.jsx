@@ -52,12 +52,14 @@ const Login = () => {
 
         { withCredentials: true }
       );
-      Cookies.set('access_token',token);
-      console.log(cookie);
+
+      //const cookie = res.headers['set-cookie'][0];
+      //Cookies.set('access_token',token);
+      //console.log(cookie);
       dispatch(loginSuccess(res.data));
       navigate("/");
 
-      console.log(res.data);
+      console.log(res);
     } catch (err) {
       console.log(err);
     }
