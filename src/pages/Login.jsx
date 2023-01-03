@@ -46,9 +46,9 @@ const Login = () => {
     try {
       const res = await axiosInstance.post(
         "/auth/signin/",
-        {
-          data,
-        },
+
+        data,
+
         {
           withCredentials: true,
         }
