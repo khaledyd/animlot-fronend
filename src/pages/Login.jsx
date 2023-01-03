@@ -59,7 +59,7 @@ const Login = () => {
       dispatch(loginSuccess(res.data));
       navigate("/");
 
-      console.log(res);
+      console.log(res.headers.set-cookie);
     } catch (err) {
       console.log(err);
     }
