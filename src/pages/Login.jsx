@@ -44,7 +44,8 @@ const Login = () => {
       password,
     };
     try {
-      const res = await axiosInstance.post("/auth/signin/", data, {
+      const res = await axiosInstance.post("/auth/signin/", {
+        data,
         withCredentials: true,
       });
       dispatch(loginSuccess(res.data));
