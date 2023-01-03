@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { loginFailure, loginStart, loginSuccess } from "../Redux/userSlice";
 import { useNavigate } from "react-router-dom";
 import cookie from "cookie";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -47,25 +48,14 @@ const Login = () => {
     try {
       const res = await axiosInstance.post(
         "/auth/signin/",
-
-        data,
-
         {
-          withCredentials: true,
-        }
+          data,
+        },
+
+        { withCredentials: true }
       );
-      const jwt = response.headers["set-cookie"]
-        .find((c) => c.startsWith("access_token="))
-        .split(";")[0]
-        .split("=")[1];
-      // set the JWT in a cookie
-      document.cookie = cookie.serialize("access_token", jwt, {
-        httpOnly: true,
-        sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-      });
-      // redirect to the protected route
-      history.push("/protected");
+      const cookie = res.headers['set-cookie'][0];
+      console.log(cookie);
       dispatch(loginSuccess(res.data));
       navigate("/");
 
