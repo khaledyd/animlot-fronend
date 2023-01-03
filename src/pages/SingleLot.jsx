@@ -14,7 +14,7 @@ import { dislike, fetchSuccess, like } from "../Redux/videoSlice";
 import { subscription } from ".././Redux/userSlice";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
-import {axiosInstance} from "../config"
+import { axiosInstance } from "../config";
 
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
@@ -79,8 +79,12 @@ const SingleLot = () => {
   const handleSub = async () => {
     if (currentUser) {
       currentUser.subscribedUsers.includes(subs._id)
-        ? await axiosInstance.put(`/users/unsub/${subs._id}`)
-        : await axiosInstance.put(`/users/sub/${subs._id}`);
+        ? await axiosInstance.put(`/users/unsub/${subs._id}`, {
+            withCredentials: true,
+          })
+        : await axiosInstance.put(`/users/sub/${subs._id}`, {
+            withCredentials: true,
+          });
       dispatch(subscription(subs._id));
     }
   };
