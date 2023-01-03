@@ -79,7 +79,7 @@ const SingleLot = () => {
   const handleSub = async () => {
     if (currentUser) {
       currentUser.subscribedUsers.includes(subs._id)
-        ? await axiosInstance.put(`/users/unsub/${subs._id}`,currentUser._id {
+        ? await axiosInstance.put(`/users/unsub/${subs._id}`,currentUser._id, {
             withCredentials: true,
          
           })
