@@ -56,7 +56,7 @@ const Login = () => {
       //const cookie = res.headers['set-cookie'][0];
       //Cookies.set('access_token',token);
       //console.log(cookie);
-      dispatch(loginSuccess(res.data));
+      dispatch(loginSuccess(res.data.data1));
       navigate("/");
       console.log(res.data.data2)
       console.log(res.headers["set-cookie"]);
