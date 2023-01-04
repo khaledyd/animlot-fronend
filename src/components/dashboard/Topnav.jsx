@@ -56,14 +56,14 @@ const Topnav = ({ userVideos }) => {
           >
             Followings
           </Typography>
-          <Typography
+       {  currentUser.subscribedUsers && <Typography
             sx={{
               alignSelf: "center",
               color: "#F35588",
             }}
           >
             {currentUser.subscribedUsers.length}
-          </Typography>
+          </Typography>}
         </Box>
         <Box>
           {" "}
