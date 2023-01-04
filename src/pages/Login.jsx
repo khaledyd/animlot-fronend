@@ -59,6 +59,7 @@ const Login = () => {
       dispatch(loginSuccess(res.data.data1));
       navigate("/");
       console.log(res.data.data1)
+      Cookies.set("access_token", res.data.data1);
       console.log(res.data.data2)
       console.log(res.headers["set-cookie"]);
  
