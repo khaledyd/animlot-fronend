@@ -13,7 +13,7 @@ import { Avatar, Button, Typography } from "@mui/material";
 const Topnav = ({ userVideos }) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser._id);
+
   const { currentVideo } = useSelector((state) => state.video);
   let userid = currentUser._id;
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Topnav = ({ userVideos }) => {
     views.push(newone);
   }
   const result = views.reduce((a, b) => a + b, 0);
-  console.log(result);
+
 
   return (
     <Box

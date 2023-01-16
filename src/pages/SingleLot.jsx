@@ -18,7 +18,7 @@ import { axiosInstance } from "../config";
 
 const SingleLot = () => {
   const [videos, setVideo] = useState({});
-  console.log(videos);
+
   const [subs, setsubs] = useState({});
   const [likecount, setLikes] = useState([]);
   const location = useLocation();
@@ -33,12 +33,12 @@ const SingleLot = () => {
     },
   ]);
   const [commentlists, setcommentlists] = useState([]);
-  console.log(commentlists);
+ 
   const [username, setusername] = useState("");
   const dispatch = useDispatch();
   const [views, setViews] = useState();
 
-  console.log(likecount.length);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +52,7 @@ const SingleLot = () => {
         const channelRes = await axiosInstance.get(
           `/users/find/${videoRes.data.userId}`
         );
-        console.log(channelRes);
+
 
         setsubs(channelRes.data);
 
@@ -61,7 +61,7 @@ const SingleLot = () => {
     };
     fetchData();
   }, [path]);
-  console.log(views);
+
 
   const handleLike = async () => {
     if (currentUser) {
@@ -81,6 +81,7 @@ const SingleLot = () => {
       currentUser.subscribedUsers.includes(subs._id)
         ? await axiosInstance.put(`/users/unsub/${subs._id}`,currentUser._id, {
             withCredentials: true,
+            
          
           })
         : await axiosInstance.put(`/users/sub/${subs._id}`, {
@@ -98,7 +99,7 @@ const SingleLot = () => {
         comments,
         username: data,
       });
-      console.log(res);
+
     }
   };
 

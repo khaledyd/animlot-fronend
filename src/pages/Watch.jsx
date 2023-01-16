@@ -13,7 +13,7 @@ const Watch = () => {
       const res = await axiosInstance.get("/videos");
 
       setVideos(res.data);
-      console.log(res.data);
+
     };
 
     fetchdata();

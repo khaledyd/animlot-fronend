@@ -97,7 +97,7 @@ const Home = () => {
 
     fetchdata();
   }, []);
-  console.log(sponsorredVideos);
+
   return (
     <Box
       sx={{

@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 export default function DribbbleShot({ sponsorredVideos }) {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(sponsorredVideos);
+
   return (
     <Card
       sx={{

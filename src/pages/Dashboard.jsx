@@ -14,17 +14,17 @@ import {axiosInstance} from "../config"
 const Dashboard = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
-  console.log(currentUser._id);
+
   const { currentVideo } = useSelector((state) => state.video);
   let userid = currentUser._id;
-  console.log(currentUser);
+
   const [userVideos, setUserVideos] = useState([]);
-  console.log(userVideos);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const videoRes = await axiosInstance.get(`/videos/getusers/${userid}`);
-        console.log(videoRes.data);
+      
         setUserVideos(videoRes.data);
       } catch (err) {}
     };

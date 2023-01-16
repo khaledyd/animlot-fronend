@@ -21,9 +21,9 @@ const Signup = () => {
     };
     try {
       const res = await axiosInstance.post("/auth/signup", data);
-      console.log(res.data);
+
     } catch (err) {
-      console.log(err);
+    
     }
   };
 

@@ -49,9 +49,9 @@ const Upload = () => {
         ...inputs
       });
 
-      console.log(res.data);
+
     } catch (err) {
-      console.log(err);
+
     }
   };
 

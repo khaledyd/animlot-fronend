@@ -9,7 +9,6 @@ import {axiosInstance} from "../config"
 const Search = () => {
   const [videos, setVideos] = useState([]);
   const query = useLocation().search;
-  console.log(query);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -19,7 +18,7 @@ const Search = () => {
     };
     fetchVideos();
   }, [query]);
-  console.log(videos)
+
   return (
     <Box
       display={"flex"}
