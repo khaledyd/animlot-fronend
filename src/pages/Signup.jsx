@@ -124,7 +124,7 @@ const Signup = () => {
                 onClick={handlesubmit}
 
               >
-                Log in
+    sign Up
               </Button>
               <Box
                 justifyContent={"flex-start"}
@@ -136,13 +136,15 @@ const Signup = () => {
                   sx={{
                     color: "#F35588",
                   }}
+                  onClick = {()=>navigate("/login")}
                 >
-                  Sing up
+               Log in
                 </Typography>
                 <Typography
                   sx={{
                     color: "#F35588",
                   }}
+                  onClick = {()=>navigate("/ForgetPassword")}
                 >
                   Forget password
                 </Typography>

@@ -144,17 +144,7 @@ const Login = () => {
               >
                 Log in
               </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  width: "100%",
-                  marginTop: "10px",
-                  backgroundColor: "#F35588",
-                }}
-                onClick={signInWithGoogle}
-              >
-                Log in
-              </Button>
+            
               <Box
                 justifyContent={"flex-start"}
                 sx={{
@@ -164,14 +154,18 @@ const Login = () => {
                 <Typography
                   sx={{
                     color: "#F35588",
+                    cursor:"pointer"
                   }}
+                  onClick = {()=>navigate("/signup")}
                 >
                   Sing up
                 </Typography>
                 <Typography
                   sx={{
                     color: "#F35588",
+                    cursor:"pointer"
                   }}
+                  onClick = {()=>navigate("/ForgetPassword")}
                 >
                   Forget password
                 </Typography>
