@@ -4,8 +4,10 @@ import { Button, TextField, Typography } from "@mui/material";
 import Nav from "./../components/home/Nav";
 import { useState } from "react";
 import {axiosInstance} from "../config"
+import {useNavigate} from "react-router-dom"
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [fullname, setfullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -146,7 +148,7 @@ const Signup = () => {
                   }}
                   onClick = {()=>navigate("/ForgetPassword")}
                 >
-                  Forget password
+                  Forget Password
                 </Typography>
               </Box>
             </Box>
